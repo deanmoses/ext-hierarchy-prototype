@@ -1,0 +1,8 @@
+Using the  MVC system in Sencha Ext 4.0 to prototype an app with the following  characteristics:
+ - Has a data model with many-to-many associations (in this case, categories have many reports and vice versa)
+ - Has a hierarchical data model (in this case, categories contain categories)
+ - Displays the hierarchical data model in a tree with collapsible nodes
+ - Uses HTML5 History and URI hash fragments to make each category state bookmarkable
+
+ I require Ext 4.0 to be in a peer directory named 'extjs'.  You can change this location if you modify a few paths in
+ index.html, such as <script src="../extjs/ext-debug.js"></script>
