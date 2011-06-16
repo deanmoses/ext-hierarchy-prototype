@@ -85,20 +85,25 @@ Ext.define('AM.controller.Reports', {
 	 * @param category the Category record from the CategoryStore that should now be selected.
 	 */
 	onHashFragmentCategoryChange: function(category) {
-		console.log("REPORTS HAS CATTY CHANGE");
+		console.log("Reports Controller - in onHashFragmentCategoryChange()");
+		var list = this.getReportList();
+		if (!list) {
+			console.warn('Reports Controller - onHashFragmentCategoryChange():  called before report list UI initialized');
+		}
+		else {
+			// Each category has a datastore of just its reports
+			var reportsInSelectedCategory = category.reports();
 
-		// Each category has a datastore of just its reports
-		var reportsInSelectedCategory = category.reports();
+			// I shouldn't have to sort here, but the sort specified on the model doesn't seem to work
+			reportsInSelectedCategory.sort([
+				{property: 'title',  direction: 'ASC'}
+			]);
 
-		// I shouldn't have to sort here, but the sort specified on the model doesn't seem to work
-		reportsInSelectedCategory.sort([
-			{property: 'title',  direction: 'ASC'}
-		]);
+			// Bind the data store to the report list widget
+			list.bindStore(reportsInSelectedCategory);
 
-		// Bind the data store to the report list widget
-		this.getReportList().bindStore(reportsInSelectedCategory);
-
-		this.getReportList().setTitle(category.data.text);
+			list.setTitle(category.data.text);
+		}
 	},
 
 	/**

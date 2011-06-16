@@ -73,7 +73,10 @@ Ext.define('AM.controller.Categories', {
 		});
 
 		// Subscribe to the URI hash fragment change event
-		this.application.on('categoryChange', me.onHashFragmentCategoryChange, me);
+		me.application.on({
+			scope: me,
+			categoryChange: me.onHashFragmentCategoryChange
+		});
     },
 
 	/**
@@ -100,18 +103,23 @@ Ext.define('AM.controller.Categories', {
 	 */
 	onHashFragmentCategoryChange: function(record) {
 		var list = this.getList();
-		var selectionModel = list.getSelectionModel();
-
-		// Since I myself might have caused this event by setting the hash fragment
-		// in the first place, I must discard the event if the correct category is
-		// already selected.   Otherwise it might cause an infinite event loop if I
-		// re-select it.
-		if (selectionModel.isSelected(record)) {
-			console.log("I HAZ BIN ALREEDY SELETTED:  " + record.data.id);
+		if (!list) {
+			console.warn('Categories Controller - onHashFragmentCategoryChange():  called before category list UI initialized');
 		}
 		else {
-			console.log("GWINNA CHANGE ME A CATTY GORY:  " + record.data.id);
-			list.selectPath(record.getPath());
+			var selectionModel = list.getSelectionModel();
+
+			// Since I myself might have caused this event by setting the hash fragment
+			// in the first place, I must discard the event if the correct category is
+			// already selected.   Otherwise it might cause an infinite event loop if I
+			// re-select it.
+			if (selectionModel.isSelected(record)) {
+				console.log("Categories Controller - onHashFragmentCategoryChange() - category was already selected: " + record.data.id);
+			}
+			else {
+				console.log("Categories Controller - onHashFragmentCategoryChange() - selecting category: " + record.data.id);
+				list.selectPath(record.getPath());
+			}
 		}
 	},
 
@@ -141,7 +149,7 @@ Ext.define('AM.controller.Categories', {
 			// A category object was passed in instead of a string ID.  Get the ID.
 			category = category.id;
 		}
-		console.log("Changing to category: " + category);
+		console.log("Categories Controller - changeCategory(): Changing to category: " + category);
 		Ext.History.add('category/' + category);
 	}
 

@@ -1,5 +1,5 @@
 /**
- * Provides storage for the Report model objects.
+ * Provides storage for Report model instances.
  *
  * In the Ext MVC framework, a Store class encapsulates a client side cache of Model objects.
  * Stores load data via a Proxy, and also provide functions for sorting, filtering and
@@ -27,6 +27,12 @@ Ext.define('AM.store.Reports', {
 			direction: 'ASC'
 		}
 	]
+	
+// Commented out because reports are now loaded as part of retrieving Categories.
+// However, I want to bring it back when I figure out how, so that I can get
+// a single list of all reports, rather than a list of reports that are in
+// each category, because the per-category lists duplicate reports that live in
+// multiple categories.  Want a single source of truth.
 //	,
 //	/**
 //	 * Proxies are the way to load and save data from a Store or a Model.

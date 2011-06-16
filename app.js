@@ -1,5 +1,6 @@
 Ext.require([
-    'Ext.util.History'
+    'Ext.util.History',
+	'Ext.JSON'
 ]);
 
 /**
@@ -53,6 +54,8 @@ Ext.application({ // Creates a new instance of the Application class
 	 * Initialization stuff, happens before launch().
 	 */
 	initComponent: function() {
+		console.log('in app.initComponent()');
+
 		// Declare that I broadcast the categoryChange event
 		this.addEvents('categoryChange');
 	},
@@ -71,7 +74,40 @@ Ext.application({ // Creates a new instance of the Application class
 	},
 
 	/**
-	 * Called time the URI fragment changes (the #hash part of the URL).
+	 * Playing around with various ways to cache data in HTML5 localStorage
+	 */
+//	updateCategories: function() {
+//
+//	These are random snippets of code that I was commenting and uncommented to
+//	test various ways of doing localStorage;  it's not a cohesive, linear method.
+//
+//		var categoryJson = localStorage.getItem('categoriesJson');
+//		if (categoryJson) {
+//			categoryJson = Ext.JSON.decode(localStorage.categoriesJson);
+//			var localCategoriesStore = Ext.data.StoreManager.lookup('Categories');
+//			localCategoriesStore.setRootNode(categoriesJson);
+//		}
+//
+//		Ext.Ajax.request({
+//			url: 'data/category/getAll.json',
+//			success: function(response, opts) {
+//				var categoriesJson = Ext.JSON.decode(response.responseText);
+//
+//				//localStorage.categoriesJson
+//				//var categoryJson = Ext.JSON.decode(localStorage.categoriesJson);
+//				var localCategoriesStore = Ext.data.StoreManager.lookup('Categories');
+//				localCategoriesStore.setRootNode(categoriesJson);
+//
+//				localCategoriesStore.getRootNode().appendChild({id: 103, text: 'Laffy Taffy'});
+//				debugger;
+//				localCategoriesStore.sync();
+//			}
+//		});
+//	},
+
+	/**
+	 * Called when the URI hash fragment changes (the #hash part of the URL).
+	 * 
 	 * @param hashFragment The new value of the URI's #hash fragment
 	 */
 	onHistoryChange: function(hashFragment) {
