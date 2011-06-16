@@ -6,3 +6,7 @@ This is a prototype of an MVC application in Sencha Ext 4.0.  It has the followi
 
  You must download Ext 4.0 from the Sencha website and install it into a peer directory named 'extjs'.  
 You can change this location if you modify a few paths in index.html, such as <script src="../extjs/ext-debug.js"></script>
+
+Good places to learn about Senca Ext 4.0's MVC system:
+ - The root of the docs: http://docs.sencha.com/ext-js/4-0/
+ - Overview of Ext's MVC architecture:  http://docs.sencha.com/ext-js/4-0/#/guide/application_architecture

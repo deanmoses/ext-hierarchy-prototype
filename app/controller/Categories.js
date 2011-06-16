@@ -1,7 +1,7 @@
 /**
  * The Category controller.
  * 
- * Controllers are the glue that binds an application together.
+ * In the Ext MVC framework, controllers are the glue that binds an application together.
  * They mostly listen for events (usually from views) and take some actions.
  *
  * @author: moses

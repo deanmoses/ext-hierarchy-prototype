@@ -1,5 +1,12 @@
 /**
- * Left hand navigation tree widget.   Mainly contains report categories.
+ * View that renders the left hand navigation tree widget.   Mainly contains report categories.
+ *
+ * In the Ext MVC framework, a View is responsible for simply rendering a piece of UI.
+ * The actual events and actions that make use of this UI live in the controllers.
+ * Views are usually defined as a subclass of an Ext JS component.
+ *
+ * Overview of Ext's Tree functionality: http://docs.sencha.com/ext-js/4-0/#/guide/tree
+ * Tree Panel docs:  http://docs.sencha.com/ext-js/4-0/#/api/Ext.tree.Panel
  *
  * @author: moses
  * @date: 6/14/11

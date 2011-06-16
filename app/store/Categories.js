@@ -1,8 +1,9 @@
 /**
  * Provides storage for the Category model objects.
  * 
- * The Store class encapsulates a client side cache of Model objects. Stores load data via a Proxy,
- * and also provide functions for sorting, filtering and querying the model instances contained within it.
+ * In the Ext MVC framework, a Store class encapsulates a client side cache of Model objects.
+ * Stores load data via a Proxy, and also provide functions for sorting, filtering and
+ * querying the model instances contained within it.
  *
  * @author: moses
  * @date: 6/14/11

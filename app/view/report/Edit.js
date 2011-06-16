@@ -1,7 +1,9 @@
 /**
- * View that handles editing a Report record within the grid.
+ * View that renders a Report edit dialog.
  * 
- * A View is nothing more than a Component, usually defined as a subclass of an Ext JS component.
+ * In the Ext MVC framework, a View is responsible for simply rendering a piece of UI.
+ * The actual events and actions that make use of this UI live in the controllers.
+ * Views are usually defined as a subclass of an Ext JS component.
  *
  * @author: moses
  * @date: 6/15/11
